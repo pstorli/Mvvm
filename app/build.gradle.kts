@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.pstorli.mvvm"
-        minSdk = 24
+        minSdk = 25
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -34,7 +34,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
     buildFeatures {
         compose = true
@@ -57,4 +57,12 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // To display Images from URL
+    //noinspection UseTomlInstead
+    implementation("io.coil-kt:coil-compose:2.7.0")
+
+    // Coroutine support
+    //noinspection UseTomlInstead
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 }

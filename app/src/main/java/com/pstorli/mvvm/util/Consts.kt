@@ -1,0 +1,158 @@
+@file:Suppress("unused")
+package com.pstorli.mvvm.util
+
+import android.util.Log
+import androidx.compose.ui.graphics.Color
+
+/**
+ * A place to put project constants.
+ */
+
+/**
+ * The main reason to use constants, is
+ * that we can keep everyone in agreement -
+ * even it is wrong, we are all wrong and if
+ * right we are all-right.
+ *
+ * In either case both still work.
+ *
+ * ALSO - The values below are for lookup only,
+ * do not use to display to the user - use localization instead
+ * I am using them for logging.
+ * See Strings.xml
+ *
+ */
+object Consts {
+    // *********************************************************************************************
+    // Vars
+    // *********************************************************************************************
+
+    val TAG_NAME                                    = "MyConsole"
+
+    val VERBOSE                                     = false
+
+    val MIN_DELAY                                   = 333
+
+    val MAX_DELAY                                   = 1333
+
+    // Button stuff
+
+    val BTN_TEXT_COLOR                               = Color.Black
+
+    val PAUSED_BTN_BACK_COLOR                        = Color.Green
+
+    val RUNNING_BTN_BACK_COLOR                       = Color.Red
+
+    // *********************************************************************************************
+    // Log helper functions
+    // *********************************************************************************************
+
+    /**
+     * Log an error message.
+     */
+    @Suppress("unused")
+    fun logError(ex: Exception) {
+        logError(TAG_NAME, ex.toString())
+    }
+
+    /**
+     * Log an error message.
+     */
+    fun logError(msg: String) {
+        logError(TAG_NAME, msg)
+    }
+
+    /**
+     * Log an error message.
+     */
+    fun logError(msg: String, t: Throwable? = null) {
+        Log.e (TAG_NAME, msg, t)
+    }
+
+    /**
+     * Log an error message.
+     */
+    fun logError(tag: String, msg: String) {
+        Log.e(tag, msg)
+    }
+
+    /**
+     * Log an error message.
+     */
+    fun logWarning(msg: String) {
+        Log.w(TAG_NAME, msg)
+    }
+
+    /**
+     * Log an error message.
+     */
+    fun logWarning(tag: String, msg: String) {
+        Log.w(tag, msg)
+    }
+
+    /**
+     * Log an info message.
+     */
+    fun logInfo(msg: String) {
+        System.out.println (TAG_NAME + " " + msg)
+    }
+
+    /**
+     * Log an info message.
+     */
+    fun logInfo(tag: String, msg: String) {
+        Log.i(tag, msg)
+    }
+
+    /**
+     * Log an info message.
+     */
+    fun logVerbose (msg: String) {
+        if (VERBOSE) System.out.println (TAG_NAME + " " + msg)
+    }
+
+    /**
+     * Log an info message.
+     */
+    fun logVerbose (tag: String, msg: String) {
+        if (VERBOSE) Log.i(tag, msg)
+    }
+
+    /**
+     * Log a debug message.
+     */
+    fun debug (msg: String) {
+        System.out.println(TAG_NAME + " " + msg)
+    }
+
+    // *********************************************************************************************
+    // Some Random Functions :) Pete
+    // *********************************************************************************************
+
+    /**
+     * Return random num between 1 and 100
+     */
+    fun rndHundred (): Int {
+        return rndNum (1,100)
+    }
+
+    /**
+     * Return random num between start and end
+     */
+    fun rndNum (start:Int, end:Int): Int {
+        return (start..end).random()
+    }
+
+    /**
+     * Create a random light color, above  128-256
+     * each red, green and blue value4 above 128
+     */
+    fun randomColor (): Color
+    {
+        val red     = rndNum (0, 255)
+        val green   = rndNum (0, 255)
+        val blue    = rndNum (0, 255)
+
+        return Color (red, green, blue)
+    }
+}
