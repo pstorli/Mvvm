@@ -1,3 +1,4 @@
+@file:Suppress("unused")
 package com.pstorli.mvvm.ui.theme
 
 import android.app.Activity
