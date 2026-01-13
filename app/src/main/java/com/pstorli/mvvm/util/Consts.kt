@@ -39,6 +39,8 @@ object Consts {
 
     val BTN_TEXT_COLOR                               = Color.Black
 
+    val RUNNING_BTN_BORDER_COLOR                     = Color.Black
+
     val PAUSED_BTN_BACK_COLOR                        = Color.Green
 
     val RUNNING_BTN_BACK_COLOR                       = Color.Red

@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.pstorli.mvvm.R
 import com.pstorli.mvvm.getString
 import com.pstorli.mvvm.model.ViewModel
@@ -31,7 +30,7 @@ fun RunningScreen (viewModel: ViewModel, modifier: Modifier = Modifier)
         OutlinedButton (
             name        = viewModel.getString(R.string.stop),
             backColor   = Consts.RUNNING_BTN_BACK_COLOR,
-            borderColor = Color.Red,
+            borderColor = Consts.RUNNING_BTN_BORDER_COLOR,
             textColor   = BTN_TEXT_COLOR,
 
             // Toggle running state when clicked
