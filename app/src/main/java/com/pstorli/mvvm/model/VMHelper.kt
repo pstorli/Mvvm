@@ -17,7 +17,7 @@ class VMHelper (var viewModel: ViewModel)
     // /////////////////////////////////////////////////////////////////////////////////////////////
 
     // Used to run coroutines in the background.
-    var ch   = Back (viewModel)
+    var back = Back (viewModel)
 
     // /////////////////////////////////////////////////////////////////////////////////////////////
     // Functions
@@ -43,11 +43,11 @@ class VMHelper (var viewModel: ViewModel)
             // Make sure that back thread state.
             // This task throws out random colors at random times.
             // In this app it is simulatinmg outside data trickling in.
-            ch.backgroundTaskCoroutine()
+            back.backgroundTaskCoroutine()
         }
         else {
             // get paused background color.
-            ch.dataFecthCoRoutine ()
+            back.dataFetchCoroutine ()
         }
     }
 }

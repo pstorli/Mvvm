@@ -56,14 +56,14 @@ class Back (var viewModel: ViewModel)
      * routine not hang up the ui threead.
      */
     @Suppress("unused")
-    fun dataFecthCoRoutine () {
+    fun dataFetchCoroutine () {
         "Back.dataFecthCoRoutine() started ... ".logVerbose()
 
         viewModel.viewModelScope.launch {
             // Get the game, the whole enchilada.
             val fetchColorDeferred = viewModel.viewModelScope.async (Dispatchers.Main)
             {
-                repo.oneTimeDataFetchExample ()
+                repo.oneTimeDataFetch ()
             }
 
             // Wait for it. new button color

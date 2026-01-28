@@ -29,9 +29,9 @@ class Repo (var viewModel: ViewModel) {
     // /////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Fetch a color.+
+     * Fetch a color.
      */
-    fun oneTimeDataFetchExample(): Color {
+    fun oneTimeDataFetch(): Color {
         val color = randomColor ()
         "Repo.oneTimeDataFetchExample returned color $color.".logInfo()
         return color
