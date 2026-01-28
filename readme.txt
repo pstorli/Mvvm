@@ -7,7 +7,7 @@ This project is the result of needing
 a sample project to use as a starting 
 point for new projects. 
 
-It is named: ComposeMVVMSample
+It is named: MVVM
 
 The functionality is simple,
 but demonstrates basic mvvm,
