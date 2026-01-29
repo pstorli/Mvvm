@@ -1,7 +1,6 @@
 @file:Suppress("unused")
 package com.pstorli.mvvm.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
