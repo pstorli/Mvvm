@@ -1,13 +1,12 @@
-package com.pstorli.mvvm.model
+package com.pstorli.mvvm.repo
 
 import androidx.lifecycle.viewModelScope
+import com.pstorli.mvvm.domain.State
 import com.pstorli.mvvm.logError
 import com.pstorli.mvvm.logInfo
 import com.pstorli.mvvm.logVerbose
-import com.pstorli.mvvm.repo.Repo
+import com.pstorli.mvvm.model.ViewModel
 import com.pstorli.mvvm.util.Consts
-import com.pstorli.mvvm.util.Consts.MAX_DELAY
-import com.pstorli.mvvm.util.Consts.MIN_DELAY
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
@@ -15,9 +14,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.cancellation.CancellationException
-
-import com.pstorli.mvvm.domain.State.PAUSED
-import com.pstorli.mvvm.domain.State.RUNNING
 
 /**
  * This class is used to spin off co-routines which call
@@ -34,10 +30,12 @@ class Back (var viewModel: ViewModel)
 
     // Used to request long state data
     // Repository stuff, do long state things in the back.
-    // Thereason that it is private, i that people requesting
+    //
+    // The reason that it is private, i that people requesting
     // access to the repo, should go through this class,
     // so that the request is done on a backgroung thread,
     // because long state operatio9ns should
+    //
     // NOT BE DONE ON THE UI THREAD
     private var repo         = Repo (viewModel)
 
@@ -61,7 +59,7 @@ class Back (var viewModel: ViewModel)
 
         viewModel.viewModelScope.launch {
             // Get the game, the whole enchilada.
-            val fetchColorDeferred = viewModel.viewModelScope.async (Dispatchers.Main)
+            val fetchColorDeferred = viewModel.viewModelScope.async(Dispatchers.Main)
             {
                 repo.oneTimeDataFetch ()
             }
@@ -119,7 +117,7 @@ class Back (var viewModel: ViewModel)
                     repo.executeBackgroundTask()
 
                     // Wait 1 - 5 seconds
-                    val time = (Consts.rndNum(MIN_DELAY, MAX_DELAY)).toLong()
+                    val time = (Consts.rndNum(Consts.MIN_DELAY, Consts.MAX_DELAY)).toLong()
                     "Back.backgroundTaskCoroutine Delaying: $time".logVerbose()
 
                     delay(time)
@@ -127,17 +125,17 @@ class Back (var viewModel: ViewModel)
                 catch (e: CancellationException) {
                     // Re-throw CancellationException to propagate cancellation
                     "Back.backgroundTaskCoroutine CancellationException in back task: ${e.message}".logError(e)
-                    viewModel.state = PAUSED
+                    viewModel.state = State.PAUSED
                     throw e
                 }
                 catch (e: Exception) {
-                    viewModel.state = PAUSED
+                    viewModel.state = State.PAUSED
                     // Handle other exceptions (e.g., network error)
                     "Back.backgroundTaskCoroutine Error in back task: ${e.message}".logError(e)
                     "Back.backgroundTaskCoroutine Delaying 5000L millis".logVerbose()
                     delay(5000L) // Wait before retrying
                 }
-            } while (RUNNING == viewModel.state)
+            } while (State.RUNNING == viewModel.state)
 
             // null out task, will re-create if startBackTask is called again.
             bj = null

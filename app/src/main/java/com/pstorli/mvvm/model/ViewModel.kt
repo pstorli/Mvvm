@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.pstorli.mvvm.domain.State
 import com.pstorli.mvvm.util.Prefs
 import androidx.compose.ui.graphics.Color
+import com.pstorli.mvvm.domain.Game
 
 class ViewModel (val app: Application) : AndroidViewModel (app)
 {
@@ -18,7 +19,7 @@ class ViewModel (val app: Application) : AndroidViewModel (app)
     // /////////////////////////////////////////////////////////////////////////////////////////////
 
     // Used to run coroutines in the back.
-    var vh    = VMHelper (this)
+    var vh    = Game(this)
 
     // Preferences, initialize first
     // Questionable if these should be accessed through the repo.
