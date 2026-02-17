@@ -7,7 +7,7 @@ This project is the result of needing
 a sample project to use as a starting 
 point for new projects. 
 
-It is named: MVVM
+It is named: Fruit Loop 12
 
 The functionality is simple,
 but demonstrates basic mvvm,
