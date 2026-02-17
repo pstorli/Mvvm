@@ -21,11 +21,7 @@ peridically updates the
 back color of the screen,
 until the button is pressed again.
 
-0000 Changes for Version X:
-     Changed ...
-
-0001 Precompiled apk at:
-     https://drive.google.com/file/d/1zy6H26v2cxQEe-QxTWSUvlI4tQqDctkJ/view?usp=sharing
+0000 Butterfly Wings
 
 
  
